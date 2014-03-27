@@ -78,14 +78,14 @@ namespace ThermoMeter.Core
         /// <param name="value">a value which were just read from input</param>
         private void updateFluctuationInfo(IScaledValue value)
         {
-            if (value.CelsiusValue < LowerThreshold.CelsiusValue - Fluctuation.CelsiusValue ||
+            if (Math.Round(value.CelsiusValue, 3) < Math.Round(LowerThreshold.CelsiusValue - Fluctuation.CelsiusValue, 3) ||
                 value.CelsiusValue > LowerThreshold.CelsiusValue + Fluctuation.CelsiusValue)
             {
                 _isLowerFluctuating = false;
             }
 
-            if (value.CelsiusValue < UpperThreshold.CelsiusValue - Fluctuation.CelsiusValue ||
-                value.CelsiusValue > UpperThreshold.CelsiusValue + Fluctuation.CelsiusValue)
+            if (Math.Round(value.CelsiusValue, 3) < Math.Round(UpperThreshold.CelsiusValue - Fluctuation.CelsiusValue, 3) ||
+                Math.Round(value.CelsiusValue, 3) > Math.Round(UpperThreshold.CelsiusValue + Fluctuation.CelsiusValue, 3))
             {
                 _isUpperFluctuating = false;
             }

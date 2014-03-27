@@ -26,11 +26,11 @@ namespace ThermoMeter.TemperatureScale
         {
             get
             {
-                return Math.Round((Value - 32) * 5.0 / 9.0, 3);
+                return (Value - 32) * 5.0 / 9.0;
             }
             set
             {
-                Value = Math.Round(value * 9.0 / 5.0 + 32, 3);
+                Value = value * 9.0 / 5.0 + 32;
             }
         }
 

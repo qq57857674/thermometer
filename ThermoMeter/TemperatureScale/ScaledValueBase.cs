@@ -27,7 +27,7 @@ namespace ThermoMeter.TemperatureScale
         {
             get
             {
-                return Math.Round(_value, 3);
+                return _value;
             }
             set
             {
@@ -61,7 +61,7 @@ namespace ThermoMeter.TemperatureScale
             {
                 IScaledValue valueWithTargetType = ScaledValueFactory.createScaledValue<T>();
                 valueWithTargetType.RecordedDateTime = _datetime;
-                valueWithTargetType.CelsiusValue = this.CelsiusValue;
+                valueWithTargetType.CelsiusValue =  this.CelsiusValue;
                 return valueWithTargetType;
             }
         }
@@ -69,11 +69,11 @@ namespace ThermoMeter.TemperatureScale
         public int Compare(IScaledValue value)
         {
            
-            if (Math.Round(this.CelsiusValue, 3) > Math.Round(value.CelsiusValue,3))
+            if (Math.Round(this.CelsiusValue,3) > Math.Round(value.CelsiusValue,3))
             {
                 return 1;
             }
-            else if (Math.Round(this.CelsiusValue, 3) == Math.Round(value.CelsiusValue,3))
+            else if (Math.Round(this.CelsiusValue, 3) == Math.Round(value.CelsiusValue, 3))
             {
                 return 0;
             }

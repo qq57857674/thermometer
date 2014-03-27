@@ -24,7 +24,7 @@ namespace ThermoMeter.TemperatureScale
         public override double CelsiusValue{
             get
             {
-                return Math.Round(Value, 3);
+                return Value;
             }
             set
             {

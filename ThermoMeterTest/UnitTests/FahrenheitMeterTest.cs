@@ -21,7 +21,7 @@ namespace ThermoMeterTest.UnitTests
         public void Init()
         {
             mockConsumer = new MMeterConsumer();
-            mockMeter = new ThermoMeter<Fahrenheit>(mockConsumer, new Fahrenheit(32), new Celsius(100), new Celsius(1), 200);
+            mockMeter = new ThermoMeter<Fahrenheit>(mockConsumer, new Celsius(0), new Celsius(100), new Celsius(1), 200);
         }
 
        
@@ -59,6 +59,7 @@ namespace ThermoMeterTest.UnitTests
         [Test]
         public void LowerWarningWithFluctuation()
         {
+            //A fahrenheit meter reading from celsius input
             mockInputReader = new MInputReader<Celsius>();
             List<double> values = new List<double>
             {

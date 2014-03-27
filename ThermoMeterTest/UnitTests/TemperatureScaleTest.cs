@@ -38,7 +38,7 @@ namespace ThermoMeterTest.UnitTests
             double randDbl = rand.NextDouble() * 100;
             IScaledValue temp = new Fahrenheit();
             temp.CelsiusValue = randDbl;                                 //Create a temperature in fahrenheit and implicitly assign a value in celsius
-            Assert.AreEqual(Math.Round(randDbl, 3), Math.Round(temp.CelsiusValue, 3));                 //The temperature's CelsiusValue should match the value we passed in
+            Assert.AreEqual(Math.Round(randDbl,3), Math.Round(temp.CelsiusValue, 3));                 //The temperature's CelsiusValue should match the value we passed in
             Assert.AreEqual(Math.Round(randDbl * 9.0 / 5.0 + 32, 3), Math.Round(temp.Value, 3));           //The temperature's actual value in Fahrenheit should be correctly converted from celsius
         }
 
