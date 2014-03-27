@@ -40,7 +40,7 @@ namespace ThermoMeter.Core
         public void ReadValue(IScaledValue value)
         {
             OnValueRead(value);
-            updateFluctiationInfo(value);
+            updateFluctuationInfo(value);
 
             //Determine if the value is outside of the thresholds,
             //as well as whether all the values read since last warning notification
@@ -76,7 +76,7 @@ namespace ThermoMeter.Core
         /// and update the flags accordingly.
         /// </summary>
         /// <param name="value">a value which were just read from input</param>
-        private void updateFluctiationInfo(IScaledValue value)
+        private void updateFluctuationInfo(IScaledValue value)
         {
             if (value.CelsiusValue < LowerThreshold.CelsiusValue - Fluctuation.CelsiusValue ||
                 value.CelsiusValue > LowerThreshold.CelsiusValue + Fluctuation.CelsiusValue)
