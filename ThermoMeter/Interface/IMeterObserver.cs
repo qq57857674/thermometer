@@ -12,8 +12,8 @@ namespace ThermoMeter.Interface
     /// </summary>
     public interface IMeterObserver
     {
-        void ValueReadHandle(object sender, MeterEventArgs args);
-        void UpperThresholdReachedHandle(object sender, MeterEventArgs args);
-        void LowerThresholdReachedHandle(object sender, MeterEventArgs args);
+        void ValueReadHandle(IScaledValue value);
+        void UpperThresholdReachedHandle(IScaledValue value);
+        void LowerThresholdReachedHandle(IScaledValue value);
     }
 }

@@ -12,7 +12,7 @@ namespace ThermoMeter.Core
     /// <summary>
     /// Take care of the logic when and why to send a notification to the client.
     /// </summary>
-    internal class EventManager
+    sealed class EventManager
     {
         public EventManager(IMeterObserver observer)
         {
@@ -101,10 +101,9 @@ namespace ThermoMeter.Core
             if(Observer != null)
             {
                 MeterEventArgs args = new MeterEventArgs(value);
-                EventHandler<MeterEventArgs> handler = ValueUpdated;
-                if (handler != null)
+                if (ValueUpdated != null)
                 {
-                    handler(this, args);
+                    ValueUpdated(value);
                 }
             }
         }
@@ -119,10 +118,9 @@ namespace ThermoMeter.Core
             if (Observer != null)
             {
                 MeterEventArgs args = new MeterEventArgs(value, "Lower Threshold Reached!");
-                EventHandler<MeterEventArgs> handler = LowerThresholdReached;
-                if (handler != null)
+                if (LowerThresholdReached != null)
                 {
-                    handler(this, args);
+                    LowerThresholdReached(value);
                 }
             }
         }
@@ -137,18 +135,22 @@ namespace ThermoMeter.Core
             if (Observer != null)
             {
                 MeterEventArgs args = new MeterEventArgs(value, "Upper Threshold Reached!");
-                EventHandler<MeterEventArgs> handler = UpperThresholdReached;
-                if (handler != null)
+               // UpperThresholdReachedHandler handler = UpperThresholdReached;
+                if (UpperThresholdReached != null)
                 {
-                    handler(this, args);
+                    UpperThresholdReached(value);
                 }
             }
         }
 
         //Event handlers where the client-side delegates are stored
-        private event EventHandler<MeterEventArgs> ValueUpdated;
-        private event EventHandler<MeterEventArgs> LowerThresholdReached;
-        private event EventHandler<MeterEventArgs> UpperThresholdReached;
+        private event ValueUpdatedHandler ValueUpdated;
+        private event LowerThresholdReachedHandler LowerThresholdReached;
+        private event UpperThresholdReachedHandler UpperThresholdReached;
+
+        public delegate void ValueUpdatedHandler(IScaledValue value);
+        public delegate void LowerThresholdReachedHandler(IScaledValue value);
+        public delegate void UpperThresholdReachedHandler(IScaledValue value);
 
         //configurations and variables
         #region Variables

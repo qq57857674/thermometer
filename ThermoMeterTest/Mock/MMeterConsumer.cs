@@ -27,22 +27,22 @@ namespace ThermoMeterTest.Mock
         public List<IScaledValue> LowerThresholdWarnings;
         public List<IScaledValue> UpperThresholdWarnings;
 
-        public void ValueReadHandle(object sender, MeterEventArgs args)
+        public void ValueReadHandle(IScaledValue value)
         {
-            System.Diagnostics.Debug.WriteLine(String.Format("{0 : yyyy-MM-dd hh:mm} Temperature in {1} is: {2}", args.TemperatureReading.RecordedDateTime, args.TemperatureReading.ScaleDisplayName, Math.Round(args.TemperatureReading.Value, 3)));
-            Values.Add(args.TemperatureReading);
+            System.Diagnostics.Debug.WriteLine(String.Format("{0 : yyyy-MM-dd hh:mm} Temperature in {1} is: {2}", value.RecordedDateTime, value.ScaleDisplayName, Math.Round(value.Value, 3)));
+            Values.Add(value);
         }
 
-        public void UpperThresholdReachedHandle(object sender, MeterEventArgs args)
+        public void UpperThresholdReachedHandle(IScaledValue value)
         {
-            System.Diagnostics.Debug.WriteLine(args.WarningMessage);
-            UpperThresholdWarnings.Add(args.TemperatureReading);
+            System.Diagnostics.Debug.WriteLine("Upper limit reached!");
+            UpperThresholdWarnings.Add(value);
         }
 
-        public void LowerThresholdReachedHandle(object sender, MeterEventArgs args)
+        public void LowerThresholdReachedHandle(IScaledValue value)
         {
-            System.Diagnostics.Debug.WriteLine(args.WarningMessage);
-            LowerThresholdWarnings.Add(args.TemperatureReading);
+            System.Diagnostics.Debug.WriteLine("Lower limit reached!");
+            LowerThresholdWarnings.Add(value);
         }
 
     }

@@ -36,7 +36,7 @@ namespace ThermoMeter.Core
         /// <returns>if the meter started correctly</returns>
         public bool StartMeter()
         {
-            _inputReaderTask = Task.Factory.StartNew(() => ReadFromInput(), _inputReaderCTS.Token);
+            _inputReaderTask = Task.Factory.StartNew(ReadFromInput, _inputReaderCTS.Token);
             isStarted = _inputReaderTask.Status == TaskStatus.Running;
             return isStarted;
         }
