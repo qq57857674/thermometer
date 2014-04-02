@@ -10,7 +10,7 @@ namespace ThermoMeter.TemperatureScale
     /// <summary>
     /// Celsius type
     /// </summary>
-    public class Celsius : ScaledValueBase
+    public class Celsius : IScaledValue
     {
         public Celsius() : base()
         {

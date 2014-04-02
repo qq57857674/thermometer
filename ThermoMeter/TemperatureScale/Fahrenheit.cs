@@ -11,7 +11,7 @@ namespace ThermoMeter.TemperatureScale
     /// Fahrenheit type
     /// Conversion from Farenheit to celsius is handled from here
     /// </summary>
-    public class Fahrenheit : ScaledValueBase
+    public class Fahrenheit : IScaledValue
     {
         public Fahrenheit() : base()
         {
